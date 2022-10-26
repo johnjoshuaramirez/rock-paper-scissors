@@ -20,8 +20,8 @@ function playRound(playerSelection, computerSelection) {
 	const player = capitalize(playerSelection);
 	const computer = computerSelection;
 
-	console.log(player);
-	console.log(computer);
+	console.log(`Player choose ${player}`);
+	console.log(`Computer choose ${computer}`);
 
 	if (player === "Rock") {
 		if (computer === "Paper") {
@@ -54,13 +54,58 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-const playerSelection = "rock";
-
 function game(playerSelection) {
-	for (let i = 1; i <= 5; i++) {
-		const round = playRound(playerSelection, getComputerChoice());
-      console.log(round);
+	let roundNumber = 1;
+	let playerScore = 0;
+	let computerScore = 0;
+
+	printWithDelay();
+
+	function printWithDelay() {
+		setTimeout(() => {
+			const round = playRound(playerSelection, getComputerChoice());
+
+			if (round.includes("Win!")) {
+				playerScore++;
+				console.log(round);
+				console.log(
+					`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
+				);
+			} else if (round.includes("Lose")) {
+				computerScore++;
+				console.log(round);
+				console.log(
+					`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
+				);
+			} else if (round.includes("Tie")) {
+				console.log("It's a Tie");
+				console.log(
+					`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
+				);
+			}
+
+			roundNumber++;
+
+			if (5 >= roundNumber) {
+				printWithDelay();
+			}
+		}, 2000);
 	}
+
+   setTimeout(() => {
+      if (playerScore > computerScore) {
+         console.log("Player Wins!");
+      } else if (playerScore < computerScore) {
+         console.log("Computer Wins!");
+      } else {
+         console.log("It's a Tie!");
+      }
+   }, 10500);
 }
 
+const playerSelection = prompt("Please Enter Rock, Paper or Scissors");
 game(playerSelection);
+
+// function that asks for your choice five times
+// display the current result
+// display the overall winner
