@@ -54,7 +54,7 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-let roundNumber = 1;
+let roundNumber = 0;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -63,17 +63,20 @@ function game(playerSelection) {
 
 	if (round.includes("Win!")) {
 		playerScore++;
+      roundNumber++;
 		console.log(round);
 		console.log(
 			`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
 		);
 	} else if (round.includes("Lose")) {
 		computerScore++;
+      roundNumber++;
 		console.log(round);
 		console.log(
 			`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
 		);
 	} else if (round.includes("Tie")) {
+      roundNumber++;
 		console.log("It's a Tie");
 		console.log(
 			`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
