@@ -54,58 +54,58 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
+let roundNumber = 1;
+let playerScore = 0;
+let computerScore = 0;
+
 function game(playerSelection) {
-	let roundNumber = 1;
-	let playerScore = 0;
-	let computerScore = 0;
+	const round = playRound(playerSelection, getComputerChoice());
 
-	printWithDelay();
-
-	function printWithDelay() {
-		setTimeout(() => {
-			const round = playRound(playerSelection, getComputerChoice());
-
-			if (round.includes("Win!")) {
-				playerScore++;
-				console.log(round);
-				console.log(
-					`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
-				);
-			} else if (round.includes("Lose")) {
-				computerScore++;
-				console.log(round);
-				console.log(
-					`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
-				);
-			} else if (round.includes("Tie")) {
-				console.log("It's a Tie");
-				console.log(
-					`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
-				);
-			}
-
-			roundNumber++;
-
-			if (5 >= roundNumber) {
-				printWithDelay();
-			}
-		}, 2000);
+	if (round.includes("Win!")) {
+		playerScore++;
+		console.log(round);
+		console.log(
+			`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
+		);
+	} else if (round.includes("Lose")) {
+		computerScore++;
+		console.log(round);
+		console.log(
+			`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
+		);
+	} else if (round.includes("Tie")) {
+		console.log("It's a Tie");
+		console.log(
+			`Round ${roundNumber} player score is ${playerScore} vs computer score is ${computerScore}`
+		);
 	}
-
-   setTimeout(() => {
-      if (playerScore > computerScore) {
-         console.log("Player Wins!");
-      } else if (playerScore < computerScore) {
-         console.log("Computer Wins!");
-      } else {
-         console.log("It's a Tie!");
-      }
-   }, 10500);
 }
 
-const playerSelection = prompt("Please Enter Rock, Paper or Scissors");
-game(playerSelection);
+let round = 1;
 
-// function that asks for your choice five times
+function recursion() {
+	if (round > 5) {
+		if (playerScore > computerScore) {
+			console.log("Player Wins!");
+		} else if (playerScore < computerScore) {
+			console.log("Computer Wins!");
+		} else {
+			console.log("It's a Tie!");
+		}
+		return;
+	} else {
+		const playerSelection = prompt("Please Enter Rock, Paper or Scissors");
+		game(playerSelection);
+		round++;
+      setTimeout(() => {
+         recursion();
+      }, 1200)
+	}
+}
+
+recursion();
+
+// function that prompts for your choice five times
+// tracks the score
 // display the current result
 // display the overall winner
