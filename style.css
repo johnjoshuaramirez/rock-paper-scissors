@@ -177,3 +177,7 @@ button:hover {
    display: initial;
    transition: all .07s ease;
 }
+
+.not-allowed {
+   pointer-events: none;
+}
