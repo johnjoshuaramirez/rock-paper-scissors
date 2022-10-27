@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-   <script src="script.js" defer></script>
-</head>
-<body>
-   
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js" defer></script>
+      <script src="https://kit.fontawesome.com/1ec5840abb.js" crossorigin="anonymous" defer></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Pick Your Choice</h1>
+			<p>Best of 7 Game!</p>
+         <div class="circles">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="five"></div>
+            <div class="six"></div>
+            <div class="seven"></div>
+         </div>
+			<div class="choice">
+				<div class="player">
+					<div class="player-choice"><span>?</span></div>
+					<div class="player-score">
+                  <p>Player: <span>0</span></p>
+               </div>
+				</div>
+				<div class="computer">
+					<div class="computer-choice"><span>?</span></div>
+					<div class="computer-score">
+                  <p>Computer: <span>0</span></p>
+               </div>
+				</div>
+			</div>
+			<div class="buttons">
+				<button><span data-id="Rock">✊</span></button>
+				<button><span data-id="Paper">✋</span></button>
+				<button><span data-id="Scissors">✌️</span></button>
+			</div>
+		</div>
+      <div class="overlay">
+         <div class="modal">
+            <div class="score">
+               <p class="modal-player-score">Player: <span>2</span></p>
+               <p class="modal-computer-score">Computer: <span>2</span></p>
+            </div>
+            <h1>Player Wins!</h1>
+            <h2 class="modal-button">Play Again <span><i class="fa-solid fa-arrow-rotate-left"></i></span></h2>
+         </div>
+      </div>
+	</body>
 </html>
