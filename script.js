@@ -108,6 +108,7 @@ function playRound(e) {
 
    removeEventListener();
 	colorizer();
+   animation();
 }
 
 const overlay = document.querySelector(".overlay");
@@ -178,8 +179,8 @@ function colorizer() {
 }
 
 function reset() {
-	playerChoice.innerText = "?";
-	computerChoice.innerText = "?";
+	playerChoice.innerText = "";
+	computerChoice.innerText = "";
 	h1.innerText = "Pick Your Choice";
 	p.innerText = "Best of 7 Game!";
 	playerScoreCount.innerText = 0;
@@ -212,9 +213,19 @@ function removeEventListener() {
    if (roundNumber === 7) {
       buttons.forEach(button => {
          button.removeEventListener("click", playRound);
-         setTimeout(() => showModal(), 800);
+         setTimeout(() => showModal(), 1200);
       });
    }
+}
+
+function animation() {
+   playerChoice.classList.remove("active");
+   computerChoice.classList.remove("active");
+   setTimeout(() => {
+      playerChoice.classList.add("active");
+      computerChoice.classList.add("active");
+   }, 300)
+  
 }
 
 const modalButton = document.querySelector(".modal-button");

@@ -77,6 +77,13 @@ body {
    font-size: 5rem;
    height: 100%;
    cursor: default;
+   visibility: hidden;
+}
+
+.player-choice span.active,
+.computer-choice span.active {
+   visibility: initial;
+   animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .player-score,
