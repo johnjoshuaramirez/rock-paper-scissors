@@ -212,7 +212,7 @@ function removeEventListener() {
    if (roundNumber === 7) {
       buttons.forEach(button => {
          button.removeEventListener("click", playRound);
-         setTimeout(() => showModal(), 1500);
+         setTimeout(() => showModal(), 800);
       });
    }
 }
