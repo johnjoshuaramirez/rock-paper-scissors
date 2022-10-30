@@ -224,7 +224,7 @@ function animation() {
    setTimeout(() => {
       playerChoice.classList.add("active");
       computerChoice.classList.add("active");
-   }, 300)
+   }, 100)
   
 }
 
