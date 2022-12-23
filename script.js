@@ -117,7 +117,7 @@ const modalPlayerScore = document.querySelector(".modal-player-score span");
 const modalComputerScore = document.querySelector(".modal-computer-score span");
 
 function showModal() {
-	if (roundNumber === 7) {
+	if (roundNumber === 5) {
 		overlay.classList.add("active");
 		modalPlayerScore.innerText = playerScore;
 		modalComputerScore.innerText = computerScore;
@@ -136,46 +136,29 @@ const two = document.querySelector(".two");
 const three = document.querySelector(".three");
 const four = document.querySelector(".four");
 const five = document.querySelector(".five");
-const six = document.querySelector(".six");
-const seven = document.querySelector(".seven");
 
 function colorizer() {
-	if (roundNumber === 1) {
-		one.style.backgroundColor = "white";
-	} else if (roundNumber === 2) {
-		one.style.backgroundColor = "white";
-		two.style.backgroundColor = "white";
-	} else if (roundNumber === 3) {
-		one.style.backgroundColor = "white";
-		two.style.backgroundColor = "white";
-		three.style.backgroundColor = "white";
-	} else if (roundNumber === 4) {
-		one.style.backgroundColor = "white";
-		two.style.backgroundColor = "white";
-		three.style.backgroundColor = "white";
-		four.style.backgroundColor = "white";
-	} else if (roundNumber === 5) {
-		one.style.backgroundColor = "white";
-		two.style.backgroundColor = "white";
-		three.style.backgroundColor = "white";
-		four.style.backgroundColor = "white";
-		five.style.backgroundColor = "white";
-	} else if (roundNumber === 6) {
-		one.style.backgroundColor = "white";
-		two.style.backgroundColor = "white";
-		three.style.backgroundColor = "white";
-		four.style.backgroundColor = "white";
-		five.style.backgroundColor = "white";
-		six.style.backgroundColor = "white";
-	} else if (roundNumber === 7) {
-		one.style.backgroundColor = "white";
-		two.style.backgroundColor = "white";
-		three.style.backgroundColor = "white";
-		four.style.backgroundColor = "white";
-		five.style.backgroundColor = "white";
-		six.style.backgroundColor = "white";
-		seven.style.backgroundColor = "white";
-	}
+   const round = [one, two, three, four, five];
+
+   for (let i = 0; i < roundNumber; i++) {
+      switch (roundNumber) {
+         case 1:
+            round[i].style.backgroundColor = "white";
+         break
+         case 2:
+            round[i].style.backgroundColor = "white";
+         break
+         case 3:
+            round[i].style.backgroundColor = "white";
+         break
+         case 4:
+            round[i].style.backgroundColor = "white";
+         break
+         case 5:
+            round[i].style.backgroundColor = "white";
+         break
+      }
+   }
 }
 
 function reset() {
@@ -192,8 +175,6 @@ function reset() {
 	three.style.backgroundColor = "black";
 	four.style.backgroundColor = "black";
 	five.style.backgroundColor = "black";
-	six.style.backgroundColor = "black";
-	seven.style.backgroundColor = "black";
 
 	roundNumber = 0;
 	playerScore = 0;
@@ -210,7 +191,7 @@ buttons.forEach(button => {
 });
 
 function removeEventListener() {
-   if (roundNumber === 7) {
+   if (roundNumber === 5) {
       buttons.forEach(button => {
          button.removeEventListener("click", playRound);
          setTimeout(() => showModal(), 1200);
@@ -231,8 +212,3 @@ function animation() {
 const modalButton = document.querySelector(".modal-button");
 modalButton.addEventListener("click", reset);
 
-// three buttons that has a value of rock paper scissors
-// if player click button display the choice above the button and also display the computer choice
-// also display the score
-// also display the result text
-// once one player reaches five points display modal with result and play again
