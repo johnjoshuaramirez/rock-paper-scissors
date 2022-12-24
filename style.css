@@ -83,7 +83,7 @@ body {
 .player-choice span.active,
 .computer-choice span.active {
    visibility: initial;
-   animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+   animation: blowUpModal 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .player-score,

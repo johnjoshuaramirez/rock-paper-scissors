@@ -141,23 +141,7 @@ function colorizer() {
    const round = [one, two, three, four, five];
 
    for (let i = 0; i < roundNumber; i++) {
-      switch (roundNumber) {
-         case 1:
-            round[i].style.backgroundColor = "white";
-         break
-         case 2:
-            round[i].style.backgroundColor = "white";
-         break
-         case 3:
-            round[i].style.backgroundColor = "white";
-         break
-         case 4:
-            round[i].style.backgroundColor = "white";
-         break
-         case 5:
-            round[i].style.backgroundColor = "white";
-         break
-      }
+      round[i].style.backgroundColor = "white";
    }
 }
 
