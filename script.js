@@ -4,8 +4,15 @@ const h1 = document.querySelector(".container h1");
 const p = document.querySelector(".container p:nth-child(2)");
 const playerScoreCount = document.querySelector(".player-score span");
 const computerScoreCount = document.querySelector(".computer-score span");
+const playerScoreBars = document.querySelectorAll(".playerScoreBar");
+const computerScoreBars = document.querySelectorAll(".computerScoreBar");
 
-let roundNumber = 0;
+const playerBar = Array.from(playerScoreBars);
+const computerBar = Array.from(computerScoreBars);
+
+console.log(playerBar);
+console.log(computerBar);
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -13,18 +20,18 @@ function playRound(e) {
 	const player = e.target.dataset.id;
 	const computer = getComputerChoice();
 
-   const rock = "✊";
-   const paper = "✋";
-   const scissors = "✌️";
+	const rock = "✊";
+	const paper = "✋";
+	const scissors = "✌️";
 
-   const win = "You Win!";
-   const lose = "You Lose!";
-   const tie = "It's a Tie!";
-   const tieMessage = `${player} ties with ${computer}`;
+	const win = "You Win!";
+	const lose = "You Lose!";
+	const tie = "It's a Tie!";
+	const tieMessage = `${player} ties with ${computer}`;
 
-   const PaperxRock = "Paper beats Rock"
-   const RockxScissors = "Rock beats Scissors"
-   const ScissorsxPaper = "Scissors beats Paper"
+	const PaperxRock = "Paper beats Rock";
+	const RockxScissors = "Rock beats Scissors";
+	const ScissorsxPaper = "Scissors beats Paper";
 
 	switch (player) {
 		case "Rock":
@@ -32,22 +39,22 @@ function playRound(e) {
 
 			switch (computer) {
 				case "Paper":
-               displayResult(paper, lose, PaperxRock);
+					displayResult(paper, lose, PaperxRock);
 					computerScore++;
-					roundNumber++;
+					// roundNumber++;
 					computerScoreCount.innerText = computerScore;
 					break;
 
 				case "Scissors":
-               displayResult(scissors, win, RockxScissors);
+					displayResult(scissors, win, RockxScissors);
 					playerScore++;
-					roundNumber++;
+					// roundNumber++;
 					playerScoreCount.innerText = playerScore;
 					break;
 
 				default:
-               displayResult(rock, tie, tieMessage);
-					roundNumber++;
+					displayResult(rock, tie, tieMessage);
+				// roundNumber++;
 			}
 
 			break;
@@ -57,22 +64,22 @@ function playRound(e) {
 
 			switch (computer) {
 				case "Rock":
-               displayResult(rock, win, PaperxRock);
+					displayResult(rock, win, PaperxRock);
 					playerScore++;
-					roundNumber++;
+					// roundNumber++;
 					playerScoreCount.innerText = playerScore;
 					break;
 
 				case "Scissors":
-               displayResult(scissors, lose, ScissorsxPaper);
+					displayResult(scissors, lose, ScissorsxPaper);
 					computerScore++;
-					roundNumber++;
+					// roundNumber++;
 					computerScoreCount.innerText = computerScore;
 					break;
 
 				default:
-               displayResult(paper, tie, tieMessage);
-					roundNumber++;
+					displayResult(paper, tie, tieMessage);
+				// roundNumber++;
 			}
 
 			break;
@@ -82,71 +89,63 @@ function playRound(e) {
 
 			switch (computer) {
 				case "Paper":
-               displayResult(paper, win, ScissorsxPaper);
+					displayResult(paper, win, ScissorsxPaper);
 					playerScore++;
-					roundNumber++;
+					// roundNumber++;
 					playerScoreCount.innerText = playerScore;
 					break;
 
 				case "Rock":
-               displayResult(rock, lose, RockxScissors);
+					displayResult(rock, lose, RockxScissors);
 					computerScore++;
-					roundNumber++;
+					// roundNumber++;
 					computerScoreCount.innerText = computerScore;
 					break;
 
 				default:
-               displayResult(scissors, tie, tieMessage);
-					roundNumber++;
+					displayResult(scissors, tie, tieMessage);
+				// roundNumber++;
 			}
 	}
 
-	removeEventListener();
-	colorizer();
+	// removeEventListener();
+	// colorizer();
 	animation();
+	console.log(playerScore);
+	console.log(computerScore);
+   incrementScoreBar();
 }
+
+console.log(playerScore);
+console.log(computerScore);
 
 const overlay = document.querySelector(".overlay");
 const result = document.querySelector(".modal h1");
 const modalPlayerScore = document.querySelector(".modal-player-score span");
 const modalComputerScore = document.querySelector(".modal-computer-score span");
 
-function showModal() {
-	if (roundNumber === 5) {
-		overlay.classList.add("active");
-		modalPlayerScore.innerText = playerScore;
-		modalComputerScore.innerText = computerScore;
-		if (playerScore > computerScore) {
-			result.innerText = "Player Wins!";
-		} else if (playerScore < computerScore) {
-			result.innerText = "Computer Wins!";
-		} else {
-			result.innerText = "It's a Tie!";
-		}
-	}
-}
-
-const one = document.querySelector(".one");
-const two = document.querySelector(".two");
-const three = document.querySelector(".three");
-const four = document.querySelector(".four");
-const five = document.querySelector(".five");
-
-function colorizer() {
-	const round = [one, two, three, four, five];
-
-	for (let i = 0; i < roundNumber; i++) {
-		round[i].style.backgroundColor = "white";
-	}
-}
+// function showModal() {
+// 	if (roundNumber === 5) {
+// 		overlay.classList.add("active");
+// 		modalPlayerScore.innerText = playerScore;
+// 		modalComputerScore.innerText = computerScore;
+// 		if (playerScore > computerScore) {
+// 			result.innerText = "Player Wins!";
+// 		} else if (playerScore < computerScore) {
+// 			result.innerText = "Computer Wins!";
+// 		} else {
+// 			result.innerText = "It's a Tie!";
+// 		}
+// 	}
+// }
 
 function incrementScoreBar() {
-   for (let i = 0; i < computerScore; i++) {
-		computerScoreBar[i].style.backgroundColor = "white";
+	for (let i = 0; i < computerScore; i++) {
+		computerBar[i].style.backgroundColor = "white";
 	}
 
-   for (let i = 0; i < playerScore; i++) {
-		playerScoreBar[i].style.backgroundColor = "white";
+	for (let i = 0; i < playerScore; i++) {
+		playerBar[i].style.backgroundColor = "white";
 	}
 }
 
@@ -179,14 +178,14 @@ buttons.forEach(button => {
 	button.addEventListener("click", playRound);
 });
 
-function removeEventListener() {
-	if (roundNumber === 5) {
-		buttons.forEach(button => {
-			button.removeEventListener("click", playRound);
-			setTimeout(() => showModal(), 1200);
-		});
-	}
-}
+// function removeEventListener() {
+// 	if (roundNumber === 5) {
+// 		buttons.forEach(button => {
+// 			button.removeEventListener("click", playRound);
+// 			setTimeout(() => showModal(), 1200);
+// 		});
+// 	}
+// }
 
 function animation() {
 	playerChoice.classList.remove("active");
