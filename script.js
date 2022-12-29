@@ -13,108 +13,92 @@ function playRound(e) {
 	const player = e.target.dataset.id;
 	const computer = getComputerChoice();
 
+   const rock = "✊";
+   const paper = "✋";
+   const scissors = "✌️";
+
+   const win = "You Win!";
+   const lose = "You Lose!";
+   const tie = "It's a Tie!";
+   const tieMessage = `${player} ties with ${computer}`;
+
+   const PaperxRock = "Paper beats Rock"
+   const RockxScissors = "Rock beats Scissors"
+   const ScissorsxPaper = "Scissors beats Paper"
+
 	switch (player) {
 		case "Rock":
-			playerChoice.innerText = "✊";
+			playerChoice.innerText = rock;
 
 			switch (computer) {
 				case "Paper":
-					computerChoice.innerText = "✋";
-					h1.innerText = "You Lose!";
-					p.innerText = "Paper beats Rock";
+               displayResult(paper, lose, PaperxRock);
 					computerScore++;
 					roundNumber++;
 					computerScoreCount.innerText = computerScore;
 					break;
 
 				case "Scissors":
-					computerChoice.innerText = "✌️";
-					h1.innerText = "You Win!";
-					p.innerText = "Rock beats Scissors";
+               displayResult(scissors, win, RockxScissors);
+					playerScore++;
+					roundNumber++;
+					playerScoreCount.innerText = playerScore;
+					break;
+
+				default:
+               displayResult(rock, tie, tieMessage);
+					roundNumber++;
+			}
+
+			break;
+
+		case "Paper":
+			playerChoice.innerText = paper;
+
+			switch (computer) {
+				case "Rock":
+               displayResult(rock, win, PaperxRock);
+					playerScore++;
+					roundNumber++;
+					playerScoreCount.innerText = playerScore;
+					break;
+
+				case "Scissors":
+               displayResult(scissors, lose, ScissorsxPaper);
+					computerScore++;
+					roundNumber++;
+					computerScoreCount.innerText = computerScore;
+					break;
+
+				default:
+               displayResult(paper, tie, tieMessage);
+					roundNumber++;
+			}
+
+			break;
+
+		case "Scissors":
+			playerChoice.innerText = scissors;
+
+			switch (computer) {
+				case "Paper":
+               displayResult(paper, win, ScissorsxPaper);
 					playerScore++;
 					roundNumber++;
 					playerScoreCount.innerText = playerScore;
 					break;
 
 				case "Rock":
-					computerChoice.innerText = "✊";
-					h1.innerText = "It's a Tie!";
-					p.innerText = `${player} ties with ${computer}`;
+               displayResult(rock, lose, RockxScissors);
+					computerScore++;
 					roundNumber++;
-               break
+					computerScoreCount.innerText = computerScore;
+					break;
+
+				default:
+               displayResult(scissors, tie, tieMessage);
+					roundNumber++;
 			}
-	}
-
-	// if (player === "Rock") {
-	// 	playerChoice.innerText = "✊";
-	// 	if (computer === "Paper") {
-	// 		computerChoice.innerText = "✋";
-	// 		h1.innerText = "You Lose!";
-	// 		p.innerText = "Paper beats Rock";
-	// 		computerScore++;
-	// 		roundNumber++;
-	// 		computerScoreCount.innerText = computerScore;
-	// 	} else if (computer === "Scissors") {
-	// 		computerChoice.innerText = "✌️";
-	// 		h1.innerText = "You Win!";
-	// 		p.innerText = "Rock beats Scissors";
-	// 		playerScore++;
-	// 		roundNumber++;
-	// 		playerScoreCount.innerText = playerScore;
-	// 	} else {
-	// 		computerChoice.innerText = "✊";
-	// 		h1.innerText = "It's a Tie!";
-	// 		p.innerText = `${player} ties with ${computer}`;
-	// 		roundNumber++;
-	// 	}
-	// }
-
-	if (player === "Paper") {
-		playerChoice.innerText = "✋";
-		if (computer === "Rock") {
-			computerChoice.innerText = "✊";
-			h1.innerText = "You Win!";
-			p.innerText = "Paper beats Rock";
-			playerScore++;
-			roundNumber++;
-			playerScoreCount.innerText = playerScore;
-		} else if (computer === "Scissors") {
-			computerChoice.innerText = "✌️";
-			h1.innerText = "You Lose!";
-			p.innerText = "Scissors beats Paper";
-			computerScore++;
-			roundNumber++;
-			computerScoreCount.innerText = computerScore;
-		} else {
-			computerChoice.innerText = "✋";
-			h1.innerText = "It's a Tie!";
-			p.innerText = `${player} ties with ${computer}`;
-			roundNumber++;
-		}
-	}
-
-	if (player === "Scissors") {
-		playerChoice.innerText = "✌️";
-		if (computer === "Paper") {
-			computerChoice.innerText = "✋";
-			h1.innerText = "You Win!";
-			p.innerText = "Scissors beats Paper";
-			playerScore++;
-			roundNumber++;
-			playerScoreCount.innerText = playerScore;
-		} else if (computer === "Rock") {
-			computerChoice.innerText = "✊";
-			h1.innerText = "You Lose!";
-			p.innerText = "Rock beats Scissors";
-			computerScore++;
-			roundNumber++;
-			computerScoreCount.innerText = computerScore;
-		} else {
-			computerChoice.innerText = "✌️";
-			h1.innerText = "It's a Tie!";
-			p.innerText = `${player} ties with ${computer}`;
-			roundNumber++;
-		}
 	}
 
 	removeEventListener();
@@ -222,4 +206,10 @@ function capitalize(word) {
 		}
 	}
 	return newWord;
+}
+
+function displayResult(hand, outcome, explain) {
+	computerChoice.innerText = hand;
+	h1.innerText = outcome;
+	p.innerText = explain;
 }
