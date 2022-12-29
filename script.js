@@ -140,6 +140,16 @@ function colorizer() {
 	}
 }
 
+function incrementScoreBar() {
+   for (let i = 0; i < computerScore; i++) {
+		computerScoreBar[i].style.backgroundColor = "white";
+	}
+
+   for (let i = 0; i < playerScore; i++) {
+		playerScoreBar[i].style.backgroundColor = "white";
+	}
+}
+
 function reset() {
 	playerChoice.innerText = "";
 	computerChoice.innerText = "";
