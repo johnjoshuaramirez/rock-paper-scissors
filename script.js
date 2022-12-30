@@ -40,21 +40,12 @@ function playRound(e) {
 			switch (computer) {
 				case "Paper":
 					displayResult(paper, lose, PaperxRock);
-					computerScore++;
-					// roundNumber++;
-					computerScoreCount.innerText = computerScore;
 					break;
-
 				case "Scissors":
 					displayResult(scissors, win, RockxScissors);
-					playerScore++;
-					// roundNumber++;
-					playerScoreCount.innerText = playerScore;
 					break;
-
 				default:
 					displayResult(rock, tie, tieMessage);
-				// roundNumber++;
 			}
 
 			break;
@@ -65,21 +56,12 @@ function playRound(e) {
 			switch (computer) {
 				case "Rock":
 					displayResult(rock, win, PaperxRock);
-					playerScore++;
-					// roundNumber++;
-					playerScoreCount.innerText = playerScore;
 					break;
-
 				case "Scissors":
 					displayResult(scissors, lose, ScissorsxPaper);
-					computerScore++;
-					// roundNumber++;
-					computerScoreCount.innerText = computerScore;
 					break;
-
 				default:
 					displayResult(paper, tie, tieMessage);
-				// roundNumber++;
 			}
 
 			break;
@@ -90,30 +72,19 @@ function playRound(e) {
 			switch (computer) {
 				case "Paper":
 					displayResult(paper, win, ScissorsxPaper);
-					playerScore++;
-					// roundNumber++;
-					playerScoreCount.innerText = playerScore;
 					break;
-
 				case "Rock":
 					displayResult(rock, lose, RockxScissors);
-					computerScore++;
-					// roundNumber++;
-					computerScoreCount.innerText = computerScore;
 					break;
-
 				default:
 					displayResult(scissors, tie, tieMessage);
-				// roundNumber++;
 			}
 	}
 
 	// removeEventListener();
 	// colorizer();
 	animation();
-	console.log(playerScore);
-	console.log(computerScore);
-   incrementScoreBar();
+	incrementScoreBar();
 }
 
 console.log(playerScore);
@@ -217,8 +188,18 @@ function capitalize(word) {
 	return newWord;
 }
 
-function displayResult(hand, outcome, explain) {
-	computerChoice.innerText = hand;
+function displayResult(choice, outcome, explain) {
+	computerChoice.innerText = choice;
 	h1.innerText = outcome;
 	p.innerText = explain;
+
+	if (outcome === "You Win!") {
+		playerScore++;
+		playerScoreCount.innerText = playerScore;
+	}
+
+	if (outcome === "You Lose!") {
+		computerScore++;
+		computerScoreCount.innerText = computerScore;
+	}
 }
