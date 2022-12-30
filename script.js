@@ -76,6 +76,8 @@ function playRound(e) {
 				default:
 					displayResult(scissors, tie, tieMessage);
 			}
+
+      default:
 	}
 
 	animation();
@@ -122,9 +124,9 @@ function reset() {
 	playerChoice.innerText = "";
 	computerChoice.innerText = "";
 	h1.innerText = "Pick Your Choice";
-	p.innerText = "Best of 7 Game!";
-	playerScoreCount.innerText = 0;
-	computerScoreCount.innerText = 0;
+	p.innerText = "First To Score 3 Wins!";
+	// playerScoreCount.innerText = 0;
+	// computerScoreCount.innerText = 0;
 	overlay.classList.remove("active");
 
 	playerBar.forEach(bar => {
@@ -204,12 +206,11 @@ function displayResult(choice, outcome, explain) {
 
 	if (outcome === "You Win!") {
 		playerScore++;
-		playerScoreCount.innerText = playerScore;
-      
+		// playerScoreCount.innerText = playerScore;
 	}
 
 	if (outcome === "You Lose!") {
 		computerScore++;
-		computerScoreCount.innerText = computerScore;
+		// computerScoreCount.innerText = computerScore;
 	}
 }
