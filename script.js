@@ -10,9 +10,6 @@ const computerScoreBars = document.querySelectorAll(".computerScoreBar");
 const playerBar = Array.from(playerScoreBars);
 const computerBar = Array.from(computerScoreBars);
 
-console.log(playerBar);
-console.log(computerBar);
-
 let playerScore = 0;
 let computerScore = 0;
 
@@ -81,34 +78,35 @@ function playRound(e) {
 			}
 	}
 
-	// removeEventListener();
-	// colorizer();
 	animation();
 	incrementScoreBar();
+   showModal();
 }
-
-console.log(playerScore);
-console.log(computerScore);
 
 const overlay = document.querySelector(".overlay");
 const result = document.querySelector(".modal h1");
 const modalPlayerScore = document.querySelector(".modal-player-score span");
 const modalComputerScore = document.querySelector(".modal-computer-score span");
 
-// function showModal() {
-// 	if (roundNumber === 5) {
-// 		overlay.classList.add("active");
-// 		modalPlayerScore.innerText = playerScore;
-// 		modalComputerScore.innerText = computerScore;
-// 		if (playerScore > computerScore) {
-// 			result.innerText = "Player Wins!";
-// 		} else if (playerScore < computerScore) {
-// 			result.innerText = "Computer Wins!";
-// 		} else {
-// 			result.innerText = "It's a Tie!";
-// 		}
-// 	}
-// }
+function showModal() {
+	if (playerScore === 3 || computerScore === 3) {
+		removeEventListener();
+
+		setTimeout(() => {
+			overlay.classList.add("active");
+			modalPlayerScore.innerText = playerScore;
+			modalComputerScore.innerText = computerScore;
+
+			if (playerScore > computerScore) {
+				result.innerText = "Player Wins!";
+			}
+
+			if (playerScore < computerScore) {
+				result.innerText = "Computer Wins!";
+			}
+		}, 2000);
+	}
+}
 
 function incrementScoreBar() {
 	for (let i = 0; i < computerScore; i++) {
@@ -129,18 +127,20 @@ function reset() {
 	computerScoreCount.innerText = 0;
 	overlay.classList.remove("active");
 
-	one.style.backgroundColor = "black";
-	two.style.backgroundColor = "black";
-	three.style.backgroundColor = "black";
-	four.style.backgroundColor = "black";
-	five.style.backgroundColor = "black";
+   playerBar.forEach(bar => {
+      bar.style.backgroundColor = "black";
+   })
 
-	roundNumber = 0;
+   computerBar.forEach(bar => {
+      bar.style.backgroundColor = "black";
+   })
+
 	playerScore = 0;
 	computerScore = 0;
 
 	buttons.forEach(button => {
 		button.addEventListener("click", playRound);
+      button.classList.add("hover", "active", "pointer");
 	});
 }
 
@@ -149,14 +149,14 @@ buttons.forEach(button => {
 	button.addEventListener("click", playRound);
 });
 
-// function removeEventListener() {
-// 	if (roundNumber === 5) {
-// 		buttons.forEach(button => {
-// 			button.removeEventListener("click", playRound);
-// 			setTimeout(() => showModal(), 1200);
-// 		});
-// 	}
-// }
+function removeEventListener() {
+	if (playerScore === 3 || computerScore === 3) {
+		buttons.forEach(button => {
+			button.removeEventListener("click", playRound);
+         button.classList.remove("hover", "active", "pointer");
+		});
+	}
+}
 
 function animation() {
 	playerChoice.classList.remove("active");

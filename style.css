@@ -117,11 +117,18 @@ button {
    width: 10rem;
    border: 1px solid white;
    background-color: gray;
-   cursor: pointer;
 }
 
-button:hover {
+button.hover:hover {
    background-color: ghostwhite;
+}
+
+button.active:active {
+   background-color: gray;
+}
+
+button.pointer {
+   cursor: pointer;
 }
 
 .overlay {
