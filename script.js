@@ -80,7 +80,7 @@ function playRound(e) {
 
 	animation();
 	incrementScoreBar();
-   showModal();
+	showModal();
 }
 
 const overlay = document.querySelector(".overlay");
@@ -127,20 +127,20 @@ function reset() {
 	computerScoreCount.innerText = 0;
 	overlay.classList.remove("active");
 
-   playerBar.forEach(bar => {
-      bar.style.backgroundColor = "black";
-   })
+	playerBar.forEach(bar => {
+		bar.style.backgroundColor = "black";
+	});
 
-   computerBar.forEach(bar => {
-      bar.style.backgroundColor = "black";
-   })
+	computerBar.forEach(bar => {
+		bar.style.backgroundColor = "black";
+	});
 
 	playerScore = 0;
 	computerScore = 0;
 
 	buttons.forEach(button => {
 		button.addEventListener("click", playRound);
-      button.classList.add("hover", "active", "pointer");
+		button.classList.add("hover", "active", "pointer");
 	});
 }
 
@@ -153,10 +153,19 @@ function removeEventListener() {
 	if (playerScore === 3 || computerScore === 3) {
 		buttons.forEach(button => {
 			button.removeEventListener("click", playRound);
-         button.classList.remove("hover", "active", "pointer");
+			button.classList.remove("hover", "active", "pointer");
 		});
 	}
 }
+
+// function slightPause() {
+// 	buttons.forEach(button => {
+// 		button.classList.remove("hover", "active", "pointer");
+// 		setTimeout(() => {
+// 			button.classList.add("hover", "active", "pointer");
+// 		}, 3000);
+// 	});
+// }
 
 function animation() {
 	playerChoice.classList.remove("active");
@@ -196,6 +205,7 @@ function displayResult(choice, outcome, explain) {
 	if (outcome === "You Win!") {
 		playerScore++;
 		playerScoreCount.innerText = playerScore;
+      
 	}
 
 	if (outcome === "You Lose!") {
